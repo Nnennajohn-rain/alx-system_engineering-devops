@@ -1,1 +1,1 @@
-Moving file from one to another
+Delete the file betty.
