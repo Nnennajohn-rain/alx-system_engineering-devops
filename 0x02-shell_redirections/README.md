@@ -1,1 +1,1 @@
-Write a script that displays the third line of the file iacta.
+Write a shell script that creates a file with an exact name containing a text ending by a new line.
