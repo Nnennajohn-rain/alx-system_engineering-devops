@@ -33,19 +33,12 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend  nnennjohn.io-frontend-http
+listen 51402-lb-01
 	bind *:80
-        mode http
-	http-request set-header X-Forwarded-Proto http
-        default_backend nnennajohn.io-backend
-
-frontend nnennajohn.io-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.nnennajohn.io.tech.pem
-	http-request set-header X-Forwarded-Proto https
-	http-request redirect scheme https code 301 unless { ssl_fc }
-	default_backend nnennajohn.io-backend
-
-backend nnennjohn.io-backend
+	bind *:443 ssl crt /etc/letsencrypt/live/mubareksd.tech/fullchain.pem
+	mode http
+	redirect scheme https code 301 if !{ ssl_fc }
 	balance roundrobin
-        server 63210-web-01 100.25.19.204:80 check
-        server 63210-web-02 54.157.159.85:80 check
+	option forwardfor
+	server 51402-web-01 100.25.183.113:80 check
+	server 51402-web-02 18.208.119.182:80 check
