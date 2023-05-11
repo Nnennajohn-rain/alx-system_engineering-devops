@@ -1,5 +1,6 @@
 0x19. Postmortem
 
+LINK to BLOG post: https://medium.com/@nnennayaaa/my-first-postmortem-the-great-nft-safari-outage-nlife-labs-f9704a1ed171
 
 For this project, we expect you to look at this concept:
 
